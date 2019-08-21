@@ -353,6 +353,7 @@ if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
     # that we invoke the DebugToolbarExtension
     app.debug = True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = None
 
     connect_to_db(app)
 
