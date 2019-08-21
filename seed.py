@@ -6,7 +6,6 @@ from model import *
 
 from server import app
 
-
 def load_users():
     """Load sample users into database."""
 
@@ -108,23 +107,28 @@ def load_place_comments(place_comments_filename):
     db.session.commit()
 
 
-
-if __name__ == "__main__":
-    connect_to_db(app)
+def create_database_schema(db):
     db.drop_all() #prevents dupe seeding
     db.create_all()
 
+
+def load_seed_data():
     neighborhood_filename = "seed_data/u.neighborhood"
     places_filename = "seed_data/u.place"
     rest_reaction_filename = "seed_data/u.rest_comments"
     place_comments_filename = "seed_data/u.place_comments"
-
 
     load_users()
     load_neighborhoods(neighborhood_filename)
     load_places_to_visit(places_filename)
     load_restaurant_reactions(rest_reaction_filename)
     load_place_comments(place_comments_filename)
+
+
+if __name__ == "__main__":
+    connect_to_db(app)
+    create_database_schema(db)
+    load_seed_data()
 
     
 
