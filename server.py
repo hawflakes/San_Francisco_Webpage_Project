@@ -3,6 +3,8 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 # from flask_debugtoolbar import DebugToolbarExtension
 
+from flask.ext.heroku import Heroku
+
 from model import connect_to_db, db, User, Neighborhood, Restaurant_reaction, Place, Place_comment
 
 import requests
@@ -15,7 +17,7 @@ from datetime import datetime
 
 
 app = Flask(__name__)
-
+heroku = Heroku(app)
 
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "ABC"
