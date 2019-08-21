@@ -349,15 +349,15 @@ def yelp_api(neighborhood_name):
 
 #     return render_template("testing.html", data=data)
     
+app.debug = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+connect_to_db(app)
     
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
     # that we invoke the DebugToolbarExtension
-    app.debug = True
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-    connect_to_db(app)
 
     # Use the DebugToolbar
     #DebugToolbarExtension(app)
