@@ -18,13 +18,8 @@ def load_users():
     rachel = User(fname="Rachel", lname="Wang", email="rachel@gmail.com", password="jellyfish", status="visitor")
     jon = User(fname="Jon", lname="Whiteaker", email="jon@gmail.com", password="square", status="resident")
 
-    db.session.add(liz)
-    db.session.add(ash)
-    db.session.add(tk)
-    db.session.add(jess)
-    db.session.add(chad)
-    db.session.add(rachel)
-    db.session.add(jon)
+    for user in [liz,ash,tk,jess,chad,rachel, jon]:
+        db.session.add(user)
 
     db.session.commit()
 
